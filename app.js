@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const EventCategory = require('./category.js')
 
 const VIEWS_PATH = path.join(__dirname, "/views/");
 
