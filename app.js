@@ -13,5 +13,5 @@ app.listen(PORT_NUMBER, function() {
 
 app.get('/', function (req, res) {
     fileName = VIEWS_PATH + "index.html";
-    res.send(fileName);
+    res.sendFile(fileName);
 })
