@@ -34,6 +34,14 @@ class EventCategory{
     getCreatedAt(){
         return this.createdAt;
     }
+
+    setImage(newImage){
+        this.image = newImage;
+    }
+
+    setDescription(newDescription){
+        this.description = newDescription;
+    }
 }
 
 function getRandomNum(max){
