@@ -1,10 +1,13 @@
 class EventCategory{
-    constructor(name){
+    constructor(name, description = "", image = ""){
         this.name = name;
         this.id = this.generateID();
-        this.description = "";
-        this.image = "";
-        this.createdAt = "";
+        this.description = description;
+        this.image = image;
+
+        let date = new Date()
+        let todaysDate = date.toLocaleDateString();
+        this.createdAt = todaysDate;
     }
 
     generateID(){
