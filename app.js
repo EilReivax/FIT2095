@@ -28,7 +28,7 @@ app.get('/category/32528558/add', function (req,res){
 })
 
 app.get('/category/32528558/view-all', function(req,res){
-    res.render("view-categories");
+    res.render("view-categories", {records: categorydb});
 })
 
 app.post('/add-category-post', function (req,res){
