@@ -27,12 +27,19 @@ app.get('/category/32528558/add', function (req,res){
     res.render("add-category");
 })
 
+app.get('/category/32528558/view-all', function(req,res){
+    res.render("view-categories");
+})
+
 app.post('/add-category-post', function (req,res){
-    let newCategory = new EventCategory(req.body.name)
+    let newCategory = new EventCategory(req.body.name, req.body.description, req.body.image);
 
-    categorydb.push(newCategory)
+    categorydb.push(newCategory);
 
-    res.redirect('/view-categories');
+    console.log(newCategory);
+    console.log(categorydb);
+
+    res.redirect('/category/32528558/view-all');
 })
 
 categorydb = [];
