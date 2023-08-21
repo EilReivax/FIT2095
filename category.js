@@ -6,7 +6,7 @@ class EventCategory{
         this.image = image;
 
         let date = new Date()
-        let todaysDate = date.toLocaleDateString();
+        let todaysDate = date.toLocaleString();
         this.createdAt = todaysDate;
     }
 
