@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const EventCategory = require('./category');
 
 const VIEWS_PATH = path.join(__dirname, "/views/");
 
@@ -22,3 +23,23 @@ app.get('/', function (req, res) {
     res.render("index");
 })
 
+app.get('/category/32528558/add', function (req,res){
+    res.render("add-category");
+})
+
+app.get('/category/32528558/view-all', function(req,res){
+    res.render("view-categories", {records: categorydb});
+})
+
+app.post('/add-category-post', function (req,res){
+    let newCategory = new EventCategory(req.body.name, req.body.description, req.body.image);
+
+    categorydb.push(newCategory);
+
+    console.log(newCategory);
+    console.log(categorydb);
+
+    res.redirect('/category/32528558/view-all');
+})
+
+categorydb = [];
