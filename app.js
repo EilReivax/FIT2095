@@ -37,9 +37,6 @@ app.post('/add-category-post', function (req,res){
 
     categoryDb.push(newCategory);
 
-    console.log(newCategory);
-    console.log(categoryDb);
-
     res.redirect('/category/32528558/view-all');
 })
 
@@ -58,9 +55,6 @@ app.post('/event/michael/add', function (req,res) {
     let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
 
     eventdb.push(newEvent);
-
-    console.log(newEvent);
-    console.log(eventdb);
 
     res.redirect('/event/michael/view-all');
 })
@@ -118,4 +112,18 @@ app.post('/delete-event-category', function(req,res){
     res.redirect('category/32528558/view-all');
 })
 
+app.get('/category/32528558/search-category', function(req, res){
+    let keyword = req.query.keyword.toLowerCase();
 
+    console.log(keyword);
+
+    let filteredDb = [];
+
+    for (let i = 0; i < categoryDb.length; i++){
+        if (categoryDb[i].description.toLowerCase().includes(keyword)){
+            filteredDb.push(categoryDb[i])
+        }
+    }
+
+    res.render('search-category', {records: filteredDb});
+})
