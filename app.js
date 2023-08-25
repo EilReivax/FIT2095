@@ -43,24 +43,6 @@ app.post('/add-category-post', function (req,res){
     res.redirect('/category/32528558/view-all');
 })
 
-<<<<<<< app.js
-categoryDb = [];
-
-app.get('/category/32528558/delete', function(req,res){
-    res.render('delete-category');
-})
-
-app.post('/delete-event-category', function(req,res){
-    let deleteID = req.body.id;
-    for (let i = 0; i < categoryDb.length; i++){
-        if (categoryDb[i].id == deleteID){
-            categoryDb.splice(i,1);
-        }
-    }
-
-    res.redirect('category/32528558/view-all');
-})
-=======
 app.get('/event/michael/add', function (req, res) {
     res.sendFile(__dirname + "/views/add-event.html");
 })
@@ -117,11 +99,9 @@ app.post('/event/michael/delete', function(req, res) {
     }
     res.redirect("/event/michael/view-all");
 })
-
-categorydb = [];
 let eventdb = [];
 
-categoryDb = [];
+let categoryDb = [];
 
 app.get('/category/32528558/delete', function(req,res){
     res.render('delete-category');
@@ -137,6 +117,5 @@ app.post('/delete-event-category', function(req,res){
 
     res.redirect('category/32528558/view-all');
 })
->>>>>>> app.js
 
 
