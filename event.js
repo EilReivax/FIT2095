@@ -3,7 +3,7 @@ class Event{
         this.id = generateID();
         this.name = name;
         this.description = description;
-        this.startDate = startDate;
+        this.startDate = new Date(startDate);
         this.duration = duration;
         this.isActive = isActive;
         this.image = image;
@@ -88,7 +88,8 @@ class Event{
 
     // Methods
     end() {
-        return this.startDate + this.duration;
+        let endDate = new Date(this.startDate.getTime() + this.duration * 60000);
+        return endDate.toLocaleString();
     }
 }
 
@@ -105,7 +106,7 @@ function getRandomLetter(){
 function generateID() {
     let letter1 = getRandomLetter();
     let letter2 = getRandomLetter();
-    let num = getRandomNum(9999);
+    let num = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
     let id = `E${letter1}${letter2}-${num}`;
     return id;
 }
