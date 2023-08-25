@@ -29,20 +29,38 @@ app.get('/category/32528558/add', function (req,res){
 })
 
 app.get('/category/32528558/view-all', function(req,res){
-    res.render("view-categories", {records: categorydb});
+    res.render("view-categories", {records: categoryDb});
 })
 
 app.post('/add-category-post', function (req,res){
     let newCategory = new EventCategory(req.body.name, req.body.description, req.body.image);
 
-    categorydb.push(newCategory);
+    categoryDb.push(newCategory);
 
     console.log(newCategory);
-    console.log(categorydb);
+    console.log(categoryDb);
 
     res.redirect('/category/32528558/view-all');
 })
 
+<<<<<<< app.js
+categoryDb = [];
+
+app.get('/category/32528558/delete', function(req,res){
+    res.render('delete-category');
+})
+
+app.post('/delete-event-category', function(req,res){
+    let deleteID = req.body.id;
+    for (let i = 0; i < categoryDb.length; i++){
+        if (categoryDb[i].id == deleteID){
+            categoryDb.splice(i,1);
+        }
+    }
+
+    res.redirect('category/32528558/view-all');
+})
+=======
 app.get('/event/michael/add', function (req, res) {
     res.sendFile(__dirname + "/views/add-event.html");
 })
@@ -102,3 +120,23 @@ app.post('/event/michael/delete', function(req, res) {
 
 categorydb = [];
 let eventdb = [];
+
+categoryDb = [];
+
+app.get('/category/32528558/delete', function(req,res){
+    res.render('delete-category');
+})
+
+app.post('/delete-event-category', function(req,res){
+    let deleteID = req.body.id;
+    for (let i = 0; i < categoryDb.length; i++){
+        if (categoryDb[i].id == deleteID){
+            categoryDb.splice(i,1);
+        }
+    }
+
+    res.redirect('category/32528558/view-all');
+})
+>>>>>>> app.js
+
+
