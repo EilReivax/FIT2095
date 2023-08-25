@@ -115,8 +115,6 @@ app.post('/delete-event-category', function(req,res){
 app.get('/category/32528558/search-category', function(req, res){
     let keyword = req.query.keyword.toLowerCase();
 
-    console.log(keyword);
-
     let filteredDb = [];
 
     for (let i = 0; i < categoryDb.length; i++){
@@ -126,4 +124,12 @@ app.get('/category/32528558/search-category', function(req, res){
     }
 
     res.render('search-category', {records: filteredDb});
+})
+
+app.get('/event/32528558/event-details/:eventPos', function(req, res){
+    let eventPos = parseInt(req.params.eventPos);
+
+    let selectedEvent = eventdb[eventPos];
+
+    res.render('event-details', {records: selectedEvent})
 })
