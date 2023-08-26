@@ -14,7 +14,7 @@
                                 <div class="card-body">
                                     <form action="/event/michael/add" method="POST">
                                         <div class="mb-3">
-                                            <label for="name" class="form-label">Event Name</label>
+                                            <label for="name" class="form-label">* Event Name</label>
                                             <input type="text" name="name" class="form-control" id="name" placeholder="Enter event name">
                                         </div>
                                         <div class="mb-3">
@@ -26,11 +26,11 @@
                                             <input type="text" name="image" class="form-control" id="image" placeholder="Enter static resource path">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="startDate" class="form-label">Start Date Time</label>
+                                            <label for="startDate" class="form-label">* Start Date Time</label>
                                             <input type="datetime-local" name="startDate" class="form-control" id="startDate">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="duration" class="form-label">Duration In Minutes</label>
+                                            <label for="duration" class="form-label">* Duration In Minutes</label>
                                             <input type="number" name="duration" class="form-control" id="duration" placeholder="Event duration in minutes">
                                         </div>
                                         <div class="mb-3">
@@ -46,7 +46,7 @@
                                             <input type="number" name="availability" class="form-control" id="availability" placeholder="Tickets Available (Optional)">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="categoryId" class="form-label">Category ID</label>
+                                            <label for="categoryId" class="form-label">* Category ID</label>
                                             <input type="text" name="categoryId" class="form-control" id="categoryId" placeholder="Category ID">
                                         </div>
                                         <button class="btn btn-primary">Submit</button>
