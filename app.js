@@ -129,7 +129,9 @@ app.get('/category/32528558/search-category', function(req, res){
 app.get('/event/32528558/event-details/:eventPos', function(req, res){
     let eventPos = parseInt(req.params.eventPos);
 
+    console.log(eventPos);
+
     let selectedEvent = eventdb[eventPos];
 
-    res.render('event-details', {records: selectedEvent})
+    res.render('event-details', {event: selectedEvent})
 })
