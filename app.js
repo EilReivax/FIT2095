@@ -66,7 +66,7 @@ app.get('/event/michael/view-soldout', function(req, res) {
     let events = [];
 
     for (let i = 0; i < eventdb.length; i++) {
-        if (eventdb[i].availability <= 0) {
+        if (eventdb[i].availability == 0) {
             events.push(eventdb[i]);
         }
     }
