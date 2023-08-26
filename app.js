@@ -48,7 +48,13 @@ app.get('/event/michael/add', function (req, res) {
 })
 
 app.post('/event/michael/add', function (req,res) {
-    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, req.body.isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
+    if (req.body.isActive) {
+        isActive = true;
+    } else {
+        isActive = false;
+    }
+
+    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
 
     eventdb.push(newEvent);
 
@@ -74,20 +80,27 @@ app.get('/event/michael/view-soldout', function(req, res) {
     res.render("view-soldout", {events: events});
 })
 
-app.get('/category/michael/view-details', function(req, res) {
-    res.render("view-category-details");
+app.get('/category/michael/view-details/:id', function(req, res) {
+    let id = req.params.id;
+    let events = [];
+
+    for (let i = 0; i < categoryDb.length; i++) {
+        if (categoryDb[i].id == id) {
+            for (let j = 0; j < eventdb.length; j++) {
+                if (eventdb[j].categoryId == id) {
+                    events.push(eventdb[j]);
+                }
+            }
+            res.render("view-category-details", {events: events});
+        }
+    }
 })
 
-app.get('/event/michael/delete'), function(req, res) {
-    res.sendFile(__dirname + "/views/delete-event.html")
-}
-
-app.post('/event/michael/delete', function(req, res) {
-    let id = parseInt(req.query.id);
+app.get('/event/michael/delete', function(req, res) {
+    let id = req.query.id;
     for (let i = 0; i < eventdb.length; i++) {
-        if (eventdb[i].id === id) {
+        if (eventdb[i].id == id) {
             eventdb.splice(i, 1);
-            break;
         }
     }
     res.redirect("/event/michael/view-all");
