@@ -48,14 +48,7 @@ app.get('/event/michael/add', function (req, res) {
 })
 
 app.post('/event/michael/add', function (req,res) {
-    let isActive;
-
-    if (req.body.isActive == true) {
-        isActive = true;
-    } else {
-        isActive = false;
-    }
-    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
+    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, req.body.isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
 
     eventdb.push(newEvent);
 
@@ -73,7 +66,7 @@ app.get('/event/michael/view-soldout', function(req, res) {
     let events = [];
 
     for (let i = 0; i < eventdb.length; i++) {
-        if (eventdb[i].availability <= 0) {
+        if (eventdb[i].availability == 0) {
             events.push(eventdb[i]);
         }
     }

@@ -13,7 +13,7 @@ class EventCategory{
     generateID(){
         let letter1 = getRandomLetter();
         let letter2 = getRandomLetter();
-        let num = getRandomNum(9999);
+        let num = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
         let ID = `C${letter1}${letter2}-${num}`;
         return ID;
     }
