@@ -48,13 +48,7 @@ app.get('/event/michael/add', function (req, res) {
 })
 
 app.post('/event/michael/add', function (req,res) {
-    if (req.body.isActive) {
-        isActive = true;
-    } else {
-        isActive = false;
-    }
-
-    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
+    let newEvent = new Event(req.body.name, req.body.description, req.body.startDate, req.body.duration, req.body.isActive, req.body.image, req.body.capacity, req.body.availability, req.body.categoryId)
 
     eventdb.push(newEvent);
 
