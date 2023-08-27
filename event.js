@@ -1,3 +1,5 @@
+let fs = require('fs');
+
 class Event{
     constructor(name, description = "", startDate, duration, isActive = true, image, capacity = 1000, availability = capacity, categoryId){
         this.id = generateID();
@@ -6,7 +8,7 @@ class Event{
         this.startDate = new Date(startDate);
         this.duration = duration;
         this.isActive = isActive;
-        this.image = checkImagePath();
+        this.image = checkImagePath(image);
         this.capacity = capacity
         this.availability = availability;
         this.categoryId = categoryId;
@@ -111,15 +113,12 @@ function generateID() {
     return id;
 }
 
-function checkImagePath() {
-    fs.readFile(this.image, function (error, content){
-        if (error){
-            return
-        }
-        else{
-            return this.image;
-        }
-    })
+function checkImagePath(image) {
+    if (fs.existsSync(image)) {
+        this._image = image;
+    } else {
+        this._image = "/no-image.jpg";
+    }
 }
 
 module.exports = Event;
