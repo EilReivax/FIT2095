@@ -1,3 +1,5 @@
+let fs = require('fs')
+
 class Event{
     constructor(name, description = "", startDate, duration, isActive = true, image, capacity = 1000, availability = capacity, categoryId){
         this.id = generateID();
