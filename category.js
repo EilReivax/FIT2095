@@ -1,9 +1,12 @@
+let fs = require('fs')
+
 class EventCategory{
     constructor(name, description = "", image = ""){
         this.name = name;
         this.id = this.generateID();
         this.description = description;
         this.image = image;
+        this.displayImage = this.checkImagePath()
 
         let date = new Date()
         let todaysDate = date.toLocaleString();
@@ -44,6 +47,17 @@ class EventCategory{
 
     setDescription(newDescription){
         this.description = newDescription;
+    }
+
+    checkImagePath(){
+        fs.readFile(this.image, function (error, content){
+            if (error){
+                return
+            }
+            else{
+                return this.image;
+            }
+        })
     }
 }
 
