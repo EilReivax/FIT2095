@@ -49,15 +49,18 @@ class EventCategory{
         this.description = newDescription;
     }
 
+    getDisplayImage(){
+        return this.displayImage;
+    }
+
     checkImagePath(){
-        fs.readFile(this.image, function (error, content){
-            if (error){
-                return "no-image.jpg"
-            }
-            else{
-                return this.image;
-            }
-        })
+        let imagePath = ""
+        if (fs.existsSync(this.image)){
+            return this.image;
+        }
+        else{
+            return "/no-image.jpg";
+        }
     }
 }
 
