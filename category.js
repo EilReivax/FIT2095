@@ -52,7 +52,7 @@ class EventCategory{
     checkImagePath(){
         fs.readFile(this.image, function (error, content){
             if (error){
-                return
+                return "no-image.jpg"
             }
             else{
                 return this.image;
