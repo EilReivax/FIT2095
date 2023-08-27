@@ -67,7 +67,7 @@ app.get('/event/michael/view-soldout', function(req, res) {
         }
     }
 
-    res.render("view-soldout", {events: events});
+    res.render("view-events", {events: events});
 })
 
 app.get('/category/michael/view-details/:id', function(req, res) {
