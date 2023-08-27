@@ -1,12 +1,12 @@
 class Event{
-    constructor(name, description = "", startDate, duration, isActive = true, image = "default_image", capacity = 1000, availability = capacity, categoryId){
+    constructor(name, description = "", startDate, duration, isActive = true, image, capacity = 1000, availability = capacity, categoryId){
         this.id = generateID();
         this.name = name;
         this.description = description;
         this.startDate = new Date(startDate);
         this.duration = duration;
         this.isActive = isActive;
-        this.image = image;
+        this.image = checkImagePath();
         this.capacity = capacity
         this.availability = availability;
         this.categoryId = categoryId;
@@ -109,6 +109,17 @@ function generateID() {
     let num = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
     let id = `E${letter1}${letter2}-${num}`;
     return id;
+}
+
+function checkImagePath() {
+    fs.readFile(this.image, function (error, content){
+        if (error){
+            return
+        }
+        else{
+            return this.image;
+        }
+    })
 }
 
 module.exports = Event;
