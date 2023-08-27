@@ -74,12 +74,13 @@ app.get('/category/michael/view-details/:id', function(req, res) {
 
     for (let i = 0; i < categoryDb.length; i++) {
         if (categoryDb[i].id == id) {
+            let category = categoryDb[i];
             for (let j = 0; j < eventdb.length; j++) {
                 if (eventdb[j].categoryId == id) {
                     events.push(eventdb[j]);
                 }
             }
-            res.render("view-category-details", {events: events});
+            res.render("view-category-details", {category: category, events: events});
         }
     }
 })

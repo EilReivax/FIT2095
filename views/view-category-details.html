@@ -4,6 +4,16 @@
         <link href="/bootstrap.min.css" rel="stylesheet"/>
     </head>
     <body>
+        <div>
+            <h5>Category ID</h3>
+            <p><%=category.id %></p>
+            <h5>Name</h3>
+            <p><%=category.name %></p>
+            <h5>Description</h3>
+            <p><%=category.description %></p>
+            <h5>Created Date Time</h3>
+            <p><%=category.createdAt %></p>
+        </div>
         <div class="album py-5">
             <div class="container">
                 <div class="my-2">
@@ -36,7 +46,7 @@
                                             <td><%= events[i].capacity %></td>
                                             <td><%= events[i].availability %></td>
                                             <td><%= events[i].categoryId %></td>
-                                            <td><button class="btn btn-primary">View</button></td>
+                                            <td><a href="<%='/event/32528558/event-details/' + i%>"><button class="btn btn-primary">View</button></a></td>
                                         </tr>
                                         <% } %>
                                 </tbody>
