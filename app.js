@@ -34,6 +34,8 @@ app.get('/category/32528558/add', function (req,res){
 app.post('/add-category-post', function (req,res){
     let newCategory = new EventCategory(req.body.name, req.body.description, req.body.image);
 
+    console.log(newCategory.displayImage + "-app.js")
+
     categoryDb.push(newCategory);
 
     res.redirect('/category/32528558/view-all');
