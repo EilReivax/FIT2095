@@ -59,12 +59,12 @@ app.get('/category/32528558/search-category', function(req, res){
     res.render('search-category', {records: filteredDb});
 })
 
-app.get('/event/32528558/event-details/:eventPos', function(req, res){
+app.get('/event/32528558/view-event-details/:eventPos', function(req, res){
     let eventPos = parseInt(req.params.eventPos);
 
     let selectedEvent = eventdb[eventPos];
 
-    res.render('event-details', {event: selectedEvent})
+    res.render('view-event-details', {event: selectedEvent})
 })
 
 app.get('/category/32528558/delete', function(req,res){
